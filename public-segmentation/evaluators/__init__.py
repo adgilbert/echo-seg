@@ -1,6 +1,6 @@
 import torch
 
-from .loss import Losses, Dice, BCEWithLogits, MSE, Pix2PixNoInputOtherLabels, P2PDiscLossWrapper, CrossEntropy, WCE
+from .loss import Losses, Dice, BCEWithLogits, MSE, CrossEntropy, WCE
 from .metrics import IoU, Metrics, Curvature, Hausdorff, DiceScore, Simplicity, Convexity, CurvatureIndividual, \
     CosineSim, SliceMerger, Bias, SurfaceDist
 
@@ -35,8 +35,6 @@ def collect_losses(opt):
             loss_fcn.add_loss(loss, BCEWithLogits(loss_weight, out_type="segs"))
         elif loss == "bbox":
             loss_fcn.add_loss(loss, MSE(loss_weight, out_type="bboxes"))
-        elif loss == "adversarial":
-            loss_fcn.add_loss(loss, Pix2PixNoInputOtherLabels(loss_weight, opt, out_type="segs"))
         elif loss == "weight_decay":
             pass  # this is handled in the optimizer initialization (above) so nothing needed here
         # Add others here as needed
@@ -50,8 +48,6 @@ def add_losses_to_metrics(losses: loss.Losses):
     metric_dict = dict()
     for name, loss in losses.loss_dict.items():
         metric_dict["loss_" + name] = loss  # LossWrapper(loss)
-        if name == "adversarial":  # add second metric for discriminator using a special helper class
-            metric_dict["loss_adversarial_D"] = P2PDiscLossWrapper(loss)
     return metric_dict
 
 

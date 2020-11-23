@@ -1,11 +1,12 @@
 # Medical Segmentation
 
-A repository for training segmentation algorithms for medical images. This repository is primarily developed for 
-segmentation of echocardiography images from the [Camus](https://www.creatis.insa-lyon.fr/Challenge/camus/) and 
-[EchoNet](https://echonet.github.io/dynamic/) datasets as well as other data with similar structure.
+![SegTask](docs/seg_task.png)
 
-Some parts of the code are specifically adapted for this (e.g. the [metrics](evaluators/__init__.py)) which assume 
-specific regions are associated with specific classes. These will need to be updated for a new segmentation task. 
+A repository for training segmentation algorithms for medical images. This repository is primarily developed for 
+segmentation of apical four and two chamber echocardiography images like those from the 
+[Camus](https://www.creatis.insa-lyon.fr/Challenge/camus/) and 
+[EchoNet](https://echonet.github.io/dynamic/) datasets as well as other data with similar structure. 
+
 
 ## Install 
 
@@ -37,6 +38,10 @@ Run `python inference.py -h` to see available options. The main options match th
 
 
 ## Notes
+
+Some parts of the code are specifically adapted for apical segmentation of the left ventricle
+ (e.g. the [metrics](evaluators/__init__.py)) which assume 
+specific regions are associated with specific classes. These will need to be updated for a new segmentation task. 
 
 Some of the structure/code from this repository is based on 
 [CycleGAN_and_pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix).

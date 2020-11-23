@@ -36,8 +36,8 @@ class BaseOptions:
         parser.add_argument('--phase', type=str, default='train',
                             help='train | val | test. Expects a dataset subfolder of the same name.')
         # models parameters
-        parser.add_argument('--model', type=str, default='unet128',
-                            help='chooses which models to use. [unet128 | unet256 | resnet_6blocks | resnet_9blocks]')
+        parser.add_argument('--model', type=str, default='unet_128',
+                            help='chooses which models to use. [unet_128 | unet_256 | resnet_6blocks | resnet_9blocks]')
         parser.add_argument('--input_nc', type=int, default=1,
                             help='# of input image channels: 3 for RGB and 1 for grayscale')
         parser.add_argument('--output_nc', type=int, default=1,
