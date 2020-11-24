@@ -1,4 +1,4 @@
-# Medical Segmentation
+# Echo Segmentation
 
 ![SegTask](docs/seg_task.png)
 
